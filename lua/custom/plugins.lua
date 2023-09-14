@@ -22,10 +22,10 @@ local plugins = {
        opts = {
               ensure_installed = {
                 "lua-language-server",
-                "pyright",
-                "clangd",
                 "csharp-language-server",
                 "cmake-language-server",
+                "pyright",
+                "clangd",
               },
         },
     }
