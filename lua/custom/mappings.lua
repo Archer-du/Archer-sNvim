@@ -10,7 +10,7 @@ M.disabled = {
   },
 }
 
-M.buffer = {
+M.tabufline = {
   n = {
     ["<leader>h"] = {"<cmd> split <CR>", "Split buffer horizontal"},
     ["<leader>v"] = {"<cmd> vsplit <CR>", "Split buffer vertical"},
