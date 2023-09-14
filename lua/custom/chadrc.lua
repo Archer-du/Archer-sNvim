@@ -16,7 +16,7 @@ M.plugins = "custom.plugins"
 M.ui = {
   theme = "tokyodark",
 
-  transparency = not vim.g.neovide,
+  transparency = false,
 
   telescope = { style = "bordered" }, -- borderless / bordered
 

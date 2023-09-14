@@ -1,8 +1,9 @@
+--custom keymappings
+--@Author: Archer
 local M = {}
 
 M.disabled = {
   n = {
-    ["<leader>h"] = "",
     ["<leader>q"] = "",
     ["<leader>v"] = "",
     ["<C-n>"] = "",
@@ -29,4 +30,20 @@ M.nvimTree = {
   },
 }
 
+local opts = { noremap = true, silent = true }
+vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+
+M.editing = {
+    n = {
+        ["<A-j>"] = {"<cmd> MoveLine 1 <CR>", "Move line down"},
+        ["<A-k>"] = {"<cmd> MoveLine -1 <CR>", "Move line up"},
+        ["<A-l>"] = {"<cmd> MoveWord 1 <CR>", "Move word right"},
+        ["<A-h>"] = {"<cmd> MoveWord -1 <CR>", "Move word left"},
+    },
+    v = {
+        ["<A-j>"] = {"", "Move block down"},
+        ["<A-k>"] = {"", "Move block up"},
+    }
+}
 return M

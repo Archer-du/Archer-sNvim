@@ -156,7 +156,7 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["<leader>lh"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
@@ -219,21 +219,21 @@ M.lspconfig = {
       "Diagnostic setloclist",
     },
 
-    ["<leader>wa"] = {
+    ["<leader>aw"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
       "Add workspace folder",
     },
 
-    ["<leader>wr"] = {
+    ["<leader>rw"] = {
       function()
         vim.lsp.buf.remove_workspace_folder()
       end,
       "Remove workspace folder",
     },
 
-    ["<leader>wl"] = {
+    ["<leader>lw"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
@@ -295,21 +295,21 @@ M.nvterm = {
 
   t = {
     -- toggle in terminal mode
-    ["<A-i>"] = {
+    ["<A-I>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<A-H>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
     },
 
-    ["<A-v>"] = {
+    ["<A-V>"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,
@@ -319,21 +319,21 @@ M.nvterm = {
 
   n = {
     -- toggle in normal mode
-    ["<A-i>"] = {
+    ["<A-I>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<A-H>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
     },
 
-    ["<A-v>"] = {
+    ["<A-V>"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,
@@ -341,13 +341,12 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>h"] = {
-      function()
-        require("nvterm.terminal").new "horizontal"
-      end,
-      "New horizontal term",
-    },
-
+    -- ["<leader>h"] = {
+    --   function()
+    --     require("nvterm.terminal").new "horizontal"
+    --   end,
+    --   "New horizontal term",
+    -- },
     ["<leader>v"] = {
       function()
         require("nvterm.terminal").new "vertical"
