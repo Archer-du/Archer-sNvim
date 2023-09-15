@@ -26,6 +26,9 @@ M.general = {
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
+    ["<Leader>w"] = { "<cmd> w <CR>", "Save file" },
+    ["<Leader>q"] = { "<cmd> q <CR>", "Quit" },
+
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
@@ -41,6 +44,7 @@ M.general = {
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
 
     ["<leader>fm"] = {
@@ -51,10 +55,10 @@ M.general = {
     },
   },
 
-  t = {
-    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
-  },
-
+  -- t = {
+  --   ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+  -- },
+  --
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
@@ -95,6 +99,9 @@ M.tabufline = {
       end,
       "Close buffer",
     },
+
+    ["<leader>h"] = {"<cmd> split <CR>", "Split buffer horizontal"},
+    ["<leader>v"] = {"<cmd> vsplit <CR>", "Split buffer vertical"},
   },
 }
 
@@ -121,7 +128,6 @@ M.comment = {
 
 M.lspconfig = {
   plugin = true,
-
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
@@ -132,21 +138,21 @@ M.lspconfig = {
       "LSP hover",
     },
 
-    ["gD"] = {
+    ["lD"] = {
       function()
         vim.lsp.buf.declaration()
       end,
       "LSP declaration",
     },
 
-    ["gd"] = {
+    ["ld"] = {
       function()
         vim.lsp.buf.definition()
       end,
       "LSP definition",
     },
 
-    ["gi"] = {
+    ["li"] = {
       function()
         vim.lsp.buf.implementation()
       end,
@@ -161,35 +167,35 @@ M.lspconfig = {
       "LSP signature help",
     },
 
-    ["<leader>D"] = {
+    ["<leader>ld"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>lr"] = {
       function()
         require("nvchad.renamer").open()
       end,
       "LSP rename",
     },
 
-    ["<leader>ca"] = {
+    ["<leader>la"] = {
       function()
         vim.lsp.buf.code_action()
       end,
       "LSP code action",
     },
 
-    ["gr"] = {
+    ["lr"] = {
       function()
         vim.lsp.buf.references()
       end,
       "LSP references",
     },
 
-    ["<leader>f"] = {
+    ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -200,17 +206,17 @@ M.lspconfig = {
       function()
         vim.diagnostic.goto_prev { float = { border = "rounded" } }
       end,
-      "Goto prev",
+      "Goto prev diagnostic",
     },
 
     ["]d"] = {
       function()
         vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
-      "Goto next",
+      "Goto next diagnostic",
     },
 
-    ["<leader>q"] = {
+    ["<leader>lq"] = {
       function()
         vim.diagnostic.setloclist()
       end,
@@ -240,7 +246,7 @@ M.lspconfig = {
   },
 
   v = {
-    ["<leader>ca"] = {
+    ["<leader>la"] = {
       function()
         vim.lsp.buf.code_action()
       end,
@@ -253,6 +259,7 @@ M.nvimtree = {
   plugin = true,
 
   n = {
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     -- toggle
     -- ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
@@ -282,9 +289,9 @@ M.telescope = {
     -- ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
 
     -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
+    ["<leader>ft"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
 
-    ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+    ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }
 
@@ -345,12 +352,12 @@ M.nvterm = {
     --   end,
     --   "New horizontal term",
     -- },
-    ["<leader>v"] = {
-      function()
-        require("nvterm.terminal").new "vertical"
-      end,
-      "New vertical term",
-    },
+  --   ["<leader>v"] = {
+  --     function()
+  --       require("nvterm.terminal").new "vertical"
+  --     end,
+  --     "New vertical term",
+  --   },
   },
 }
 
@@ -459,5 +466,23 @@ M.gitsigns = {
     },
   },
 }
+
+M.editing = {
+    n = {
+        ["<A-j>"] = {"<cmd> MoveLine 1 <CR>", "Move line down"},
+        ["<A-k>"] = {"<cmd> MoveLine -1 <CR>", "Move line up"},
+        ["<A-l>"] = {"<cmd> MoveWord 1 <CR>", "Move word right"},
+        ["<A-h>"] = {"<cmd> MoveWord -1 <CR>", "Move word left"},
+    },
+    v = {
+        ["<A-j>"] = {"", "Move block down"},
+        ["<A-k>"] = {"", "Move block up"},
+    }
+}
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+
 
 return M
