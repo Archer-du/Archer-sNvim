@@ -2,6 +2,7 @@
 ---
 ## requirements
 nodejs, npm, gcc, g++, cargo
+## features
 nvim-tree是一个用Lua编写的Neovim文件浏览器插件，它有很多常用的快捷键，可以方便地对文件和文件夹进行操作。根据我搜索到的结果¹²³⁴，这里列举一些常见的快捷键：
 
 - `:NvimTreeToggle`：打开或关闭nvim-tree窗口
@@ -29,5 +30,3 @@ nvim-tree是一个用Lua编写的Neovim文件浏览器插件，它有很多常�
 - `I`：切换显示图标
 - `R`：切换显示相对路径或绝对路径
 - `.`：切换显示点号开头的隐藏文件
-
-这些快捷键都可以在nvim-tree的设置中自定义，你可以参考nvim-tree的主页⁴来了解更多的配置选项和功能。希望这些信息对你有帮助。😊

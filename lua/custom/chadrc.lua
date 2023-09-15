@@ -8,14 +8,24 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
+local opts = { noremap = true, silent = true }
+vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+
+
 ---@type ChadrcConfig
 local M = {}
 
 M.plugins = "custom.plugins"
 
-
 M.ui = {
-  ------------------------------- base46 -------------------------------------
+   ------------------------------- base46 -------------------------------------
+  changed_themes = {},
+  theme_toggle = { "onedark", "one_light" },
+
+  lsp_semantic_tokens = false, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
+  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
+
   -- hl = highlights
   hl_add = {},
   hl_override ={
@@ -29,31 +39,24 @@ M.ui = {
     }
   },
 
-  theme_toggle = { "onedark", "one_light" },
   theme = "tokyodark",
   transparency = false,
-  lsp_semantic_tokens = false, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
-  -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
-
-  -- cmp themeing
   cmp = {
     icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-    border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
+    border_color = "white_fg", -- only applicable for "default" style, use color names from base30 variables
     selected_item_bg = "colored", -- colored / simple
   },
 
   telescope = { style = "bordered" }, -- borderless / bordered
 
-  ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
     theme = "default", -- default/vscode/vscode_colored/minimal
+    separator_style = "default",
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "default",
     overriden_modules = nil,
   },
 
@@ -65,7 +68,17 @@ M.ui = {
     overriden_modules = nil,
   },
 
-  -- nvdash (dashboard)
+  cheatsheet = { theme = "grid" }, -- simple/grid
+
+  lsp = {
+    -- show function signatures i.e args as you type
+    signature = {
+      disabled = false,
+      silent = true, -- silences 'no signature help available' message from appearing
+    },
+  },
+
+-- nvdash (dashboard)
   nvdash = {
     load_on_startup = true,
     header = {
@@ -80,19 +93,9 @@ M.ui = {
       { "  Find File", "<leader>ff", "Telescope find_files" },
       { "󰈚  Recent Files", "<leader>fo", "Telescope oldfiles" },
       { "󰈭  Find Word", "<leader>fw", "Telescope live_grep" },
-      { "  Bookmarks", "<leader>ma", "Telescope marks" },
-      { "  Themes", "<leader>th", "Telescope themes" },
+      { "  Bookmarks", "<leader>fm", "Telescope marks" },
+      { "  Themes", "<leader>ft", "Telescope themes" },
       { "  Mappings", "<leader>ch", "NvCheatsheet" },
-    },
-  },
-
-  cheatsheet = { theme = "grid" }, -- simple/grid
-
-  lsp = {
-    -- show function signatures i.e args as you type
-    signature = {
-      disabled = false,
-      silent = true, -- silences 'no signature help available' message from appearing
     },
   },
 }

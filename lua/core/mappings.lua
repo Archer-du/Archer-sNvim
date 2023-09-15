@@ -2,6 +2,16 @@
 
 local M = {}
 
+M.cursor = {
+    n = {
+        ["H"] = {"H", "Move to the top of page"},
+        ["M"] = {"M", "Move to the medium of page"},
+        ["L"] = {"L", "Move to the bottom of page"},
+        ["I"] = {"I", "Insert at beginning of line"},
+        ["A"] = {"A", "Insert at end of line"},
+        ["V"] = {"V", "Visual mode (line Unit)"}
+    }
+}
 M.general = {
   i = {
     -- go to  beginning and end
@@ -16,6 +26,8 @@ M.general = {
   },
 
   n = {
+    ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -45,9 +57,7 @@ M.general = {
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 
-    ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
-
-    ["<leader>fm"] = {
+    ["<leader>lF"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
@@ -129,7 +139,6 @@ M.comment = {
 M.lspconfig = {
   plugin = true,
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-
   n = {
     ["K"] = {
       function()
@@ -262,9 +271,6 @@ M.nvimtree = {
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     -- toggle
     -- ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-
-    -- focus
-    -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 
@@ -479,10 +485,6 @@ M.editing = {
         ["<A-k>"] = {"", "Move block up"},
     }
 }
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
-vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
 
 
 return M
