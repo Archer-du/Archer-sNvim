@@ -269,6 +269,8 @@ M.nvimtree = {
 
   n = {
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>cd"] = {"<cmd> cd %:h <CR>", "Change directory to current file"},
+    ["<leader>cp"] = {"<cmd> cd .. <CR>", "Change to parent directory"},
     -- toggle
     -- ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
   },
