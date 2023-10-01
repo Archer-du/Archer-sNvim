@@ -147,21 +147,21 @@ M.lspconfig = {
       "LSP hover",
     },
 
-    ["lD"] = {
+    ["<leader>lD"] = {
       function()
         vim.lsp.buf.declaration()
       end,
       "LSP declaration",
     },
 
-    ["ld"] = {
+    ["<leader>ld"] = {
       function()
         vim.lsp.buf.definition()
       end,
       "LSP definition",
     },
 
-    ["li"] = {
+    ["<leader>li"] = {
       function()
         vim.lsp.buf.implementation()
       end,
@@ -176,14 +176,14 @@ M.lspconfig = {
       "LSP signature help",
     },
 
-    ["<leader>ld"] = {
+    ["<leader>ltd"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
       "LSP definition type",
     },
 
-    ["<leader>lr"] = {
+    ["<leader>lnr"] = {
       function()
         require("nvchad.renamer").open()
       end,
@@ -197,7 +197,7 @@ M.lspconfig = {
       "LSP code action",
     },
 
-    ["lr"] = {
+    ["<leader>lr"] = {
       function()
         vim.lsp.buf.references()
       end,
